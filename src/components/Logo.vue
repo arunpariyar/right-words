@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ logo }}
+    <h2 class="logo">{{ logo }}</h2>
   </div>
 </template>
 <script>
@@ -13,3 +13,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.logo {
+  color: orangered;
+  margin-bottom: 40px;
+}
+</style>
