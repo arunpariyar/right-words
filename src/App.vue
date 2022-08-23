@@ -1,38 +1,34 @@
 <template>
   <div class="container">
     <logo></logo>
+    <finder></finder>
+    <info :song="song"></info>
   </div>
 </template>
 <script>
 import Logo from "./components/Logo.vue";
+import Finder from "./components/Finder.vue";
+import Info from "./components/Info.vue";
 
 export default {
   name: "App",
   components: {
     Logo,
+    Finder,
+    Info,
+  },
+  data() {
+    return {
+      song: {
+        title: "This I Love",
+        artist: "Guns & Roses",
+        album: "Chinese Democracy",
+      },
+    };
   },
 };
 </script>
 <style>
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  position: relative;
-  font-weight: normal;
-}
-
-body {
-  min-height: 100vh;
-  line-height: 1.6;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(228, 227, 227);
-  color: rgb(22, 22, 22);
-}
 .container {
   width: 700px;
   margin: 15px auto;
