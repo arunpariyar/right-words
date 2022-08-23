@@ -1,14 +1,23 @@
 <template>
   <div class="finder">
-    <input type="text" />
-    <button type="submit">🎤 Find My Song</button>
+    <input type="text" v-model="input" />
+    <button type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</button>
   </div>
 </template>
 <script>
 export default {
   name: "Finder",
-  date() {
-    return {};
+  input: "test",
+  emits: ["song-submit"],
+  data() {
+    return {
+      input: "Type Song Title",
+    };
+  },
+  methods: {
+    OnSongSubmit() {
+      this.$emit("song-submit", this.input);
+    },
   },
 };
 </script>
