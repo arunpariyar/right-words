@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="info">
     <h2>Song Details</h2>
     <p>Title: {{ song.title }}</p>
     <p>Artist: {{ song.artist }}</p>
@@ -15,3 +15,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.info {
+  margin-bottom: 20px;
+}
+</style>
