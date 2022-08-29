@@ -6,6 +6,7 @@
     <lyrics :song="song" :searchQuery="searchQuery"></lyrics>
   </div>
 </template>
+
 <script>
 import Logo from "./components/Logo.vue";
 import Finder from "./components/Finder.vue";
@@ -31,12 +32,25 @@ export default {
         It just might be that I
         Have seen in your eyes`,
       },
-      searchQuery: "test",
+      searchQuery: "",
     };
   },
   methods: {
-    updateQuery(song) {
-      this.searchQuery = song;
+    async updateQuery(song) {
+      try {
+        this.searchQuery = song;
+        const res = await fetch(
+          "https://private-anon-18345d477a-lyricsovh.apiary-mock.com/v1/Coldplay/Adventure%20of%20a%20Lifetime"
+        );
+        const data = await res.json();
+        console.log(data, this.searchQuery);
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+      } catch (err) {
+        console.log(err);
+      }
+      //change this and make an api call here
+
+      //make an api call here
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="finder">
-    <input type="text" v-model="input" />
+    <input type="text" v-model="input" placeholder="Type Song" />
     <button type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</button>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   emits: ["song-submit"],
   data() {
     return {
-      input: "Type Song Title",
+      input: "",
     };
   },
   methods: {
