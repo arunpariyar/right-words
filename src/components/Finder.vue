@@ -1,7 +1,7 @@
 <template>
   <div class="finder">
-    <input type="text" v-model="input" />
-    <button type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</button>
+    <v-text-field type="text" v-model="input"/>
+    <v-btn type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</v-btn>
   </div>
 </template>
 <script>
