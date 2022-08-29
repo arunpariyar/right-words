@@ -1,11 +1,16 @@
 <template>
-  <div class="container">
-    <logo></logo>
-    <finder @song-submit="updateQuery"></finder>
-    <info :song="song"></info>
-    <lyrics :song="song" :searchQuery="searchQuery"></lyrics>
-  </div>
+  <v-app>
+    <v-main>
+      <v-container>
+        <logo></logo>
+        <finder @song-submit="updateQuery"></finder>
+        <info :song="song"></info>
+        <lyrics :song="song" :searchQuery="searchQuery"></lyrics>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
+
 <script>
 import Logo from "./components/Logo.vue";
 import Finder from "./components/Finder.vue";
@@ -13,7 +18,8 @@ import Info from "./components/Info.vue";
 import Lyrics from "./components/Lyrics.vue";
 
 export default {
-  name: "App",
+  name: 'App',
+
   components: {
     Logo,
     Finder,
@@ -41,10 +47,3 @@ export default {
   },
 };
 </script>
-<style>
-.container {
-  width: 700px;
-  margin: 15px auto;
-  position: relative;
-}
-</style>
