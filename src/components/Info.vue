@@ -7,11 +7,19 @@
   </div>
 </template>
 <script>
+import { useSongStore } from "@/stores/song";
+import { storeToRefs } from "pinia";
 export default {
   name: "Info",
-  props: ["song"],
-  date() {
-    return {};
+  setup() {
+    const songStore = useSongStore();
+    const { song } = storeToRefs(songStore);
+    const { searchSong } = songStore;
+
+    return {
+      song,
+      searchSong,
+    };
   },
 };
 </script>

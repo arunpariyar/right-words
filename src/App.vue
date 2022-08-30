@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <logo></logo>
-    <finder @song-submit="updateQuery"></finder>
-    <info :song="song"></info>
-    <lyrics :song="song" :searchQuery="searchQuery"></lyrics>
+    <finder></finder>
+    <info></info>
+    <lyrics></lyrics>
   </div>
 </template>
 

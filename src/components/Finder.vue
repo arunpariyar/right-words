@@ -5,10 +5,10 @@
   </div>
 </template>
 <script>
+import { useSongStore } from "@/stores/song";
 export default {
   name: "Finder",
   input: "test",
-  emits: ["song-submit"],
   data() {
     return {
       input: "",
@@ -16,8 +16,16 @@ export default {
   },
   methods: {
     OnSongSubmit() {
-      this.$emit("song-submit", this.input);
+      searchSong(this.input);
     },
+  },
+  setup() {
+    const songStore = useSongStore();
+    const { searchSong } = songStore;
+
+    return {
+      searchSong,
+    };
   },
 };
 </script>
