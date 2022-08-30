@@ -32,13 +32,13 @@ export default {
         It just might be that I
         Have seen in your eyes`,
       },
-      searchQuery: "",
+      // searchQuery: "",
     };
   },
   methods: {
     async updateQuery(song) {
       try {
-        this.searchQuery = song;
+        // this.searchQuery = song;
         const res = await fetch(
           "https://private-anon-18345d477a-lyricsovh.apiary-mock.com/v1/Coldplay/Adventure%20of%20a%20Lifetime"
         );

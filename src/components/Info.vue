@@ -14,11 +14,9 @@ export default {
   setup() {
     const songStore = useSongStore();
     const { song } = storeToRefs(songStore);
-    const { searchSong } = songStore;
 
     return {
       song,
-      searchSong,
     };
   },
 };

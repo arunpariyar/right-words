@@ -1,6 +1,6 @@
 <template>
   <hr />
-  <p>{{ searchQuery }}</p>
+  <p>{{ song.searchQuery }}</p>
   <div class="lyrics">
     <p>{{ song.lyrics }}</p>
   </div>
