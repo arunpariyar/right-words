@@ -2,10 +2,9 @@
   <v-app>
     <v-main>
       <v-container>
-        <logo></logo>
-        <finder @song-submit="updateQuery"></finder>
+        <v-row><logo></logo></v-row>
+        <v-col><finder @song-submit="updateQuery"></finder></v-col>
         <info :song="song"></info>
-        <lyrics :song="song" :searchQuery="searchQuery"></lyrics>
       </v-container>
     </v-main>
   </v-app>
@@ -15,16 +14,14 @@
 import Logo from "./components/Logo.vue";
 import Finder from "./components/Finder.vue";
 import Info from "./components/Info.vue";
-import Lyrics from "./components/Lyrics.vue";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
     Logo,
     Finder,
     Info,
-    Lyrics,
   },
   data() {
     return {

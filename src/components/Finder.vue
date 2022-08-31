@@ -1,7 +1,21 @@
 <template>
   <div class="finder">
-    <v-text-field type="text" v-model="input"/>
-    <v-btn type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</v-btn>
+    <v-container>
+      <v-row class="justify-center">
+        <v-col md="6">
+          <v-text-field v-model="input" />
+        </v-col>
+      </v-row>
+      <v-row class="justify-center">
+        <v-btn
+          class="pa-6"
+          color="success"
+          type="button"
+          @click.prevent="OnSongSubmit"
+          >🎤 Find My Song</v-btn
+        >
+      </v-row>
+    </v-container>
   </div>
 </template>
 <script>
