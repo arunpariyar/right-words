@@ -1,6 +1,7 @@
 <template>
   <div class="finder">
-    <input type="text" v-model="input" placeholder="Type Song" />
+    <input type="text" v-model="qArtist" placeholder="Enter Artist" />
+    <input type="text" v-model="qSong" placeholder="Enter Song" />
     <button type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</button>
   </div>
 </template>
@@ -11,12 +12,13 @@ export default {
   emits: ["song-submit"],
   data() {
     return {
-      input: "",
+      qArtist: "",
+      qSong: "",
     };
   },
   methods: {
     OnSongSubmit() {
-      this.$emit("song-submit", this.input);
+      this.$emit("song-submit", this.qArtist, this.qSong);
     },
   },
 };
