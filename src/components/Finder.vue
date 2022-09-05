@@ -1,8 +1,22 @@
 <template>
   <div class="finder">
-    <input type="text" v-model="qArtist" placeholder="Enter Artist" />
-    <input type="text" v-model="qSong" placeholder="Enter Song" />
-    <button type="button" @click.prevent="OnSongSubmit">🎤 Find My Song</button>
+    <v-container>
+      <v-row class="justify-center">
+        <v-col md="6">
+          <v-text-field v-model="qArtist" placeholder="Enter Artist" />
+          <v-text-field v-model="qSong" placeholder="Enter Song" />
+        </v-col>
+      </v-row>
+      <v-row class="justify-center">
+        <v-btn
+          class="pa-6"
+          color="success"
+          type="button"
+          @click.prevent="OnSongSubmit"
+          >🎤 Find My Song</v-btn
+        >
+      </v-row>
+    </v-container>
   </div>
 </template>
 <script>

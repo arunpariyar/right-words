@@ -1,26 +1,27 @@
 <template>
-  <div class="container">
-    <logo></logo>
-    <finder @song-submit="updateQuery"></finder>
-    <info :song="song"></info>
-    <lyrics :song="song" :searchQuery="searchQuery"></lyrics>
-  </div>
+  <v-app>
+    <v-main>
+      <v-container>
+        <v-row><logo></logo></v-row>
+        <v-col><finder @song-submit="updateQuery"></finder></v-col>
+        <info :song="song"></info>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
-
 <script>
 import Logo from "./components/Logo.vue";
 import Finder from "./components/Finder.vue";
 import Info from "./components/Info.vue";
-import Lyrics from "./components/Lyrics.vue";
 import X2js from "x2js";
 
 export default {
   name: "App",
+
   components: {
     Logo,
     Finder,
     Info,
-    Lyrics,
   },
   data() {
     return {
@@ -106,10 +107,3 @@ export default {
   },
 };
 </script>
-<style>
-.container {
-  width: 700px;
-  margin: 15px auto;
-  position: relative;
-}
-</style>
