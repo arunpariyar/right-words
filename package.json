@@ -12,7 +12,8 @@
     "roboto-fontface": "^0.10.0",
     "vue": "^3.2.37",
     "vuetify": "^3.0.0-beta.9",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "x2js": "^3.4.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",

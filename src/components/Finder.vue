@@ -3,7 +3,8 @@
     <v-container>
       <v-row class="justify-center">
         <v-col md="6">
-          <v-text-field v-model="input" />
+          <v-text-field v-model="qArtist" placeholder="Enter Artist" />
+          <v-text-field v-model="qSong" placeholder="Enter Song" />
         </v-col>
       </v-row>
       <v-row class="justify-center">
@@ -25,12 +26,13 @@ export default {
   emits: ["song-submit"],
   data() {
     return {
-      input: "Type Song Title",
+      qArtist: "",
+      qSong: "",
     };
   },
   methods: {
     OnSongSubmit() {
-      this.$emit("song-submit", this.input);
+      this.$emit("song-submit", this.qArtist, this.qSong);
     },
   },
 };
