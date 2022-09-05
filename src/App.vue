@@ -29,10 +29,9 @@ export default {
         title: "This I Love",
         artist: "Guns & Roses",
         album: "Chinese Democracy",
-        lyrics: `And now I dont know why
-        your wouldnt say goodbye
-        It just might be that I
-        Have seen in your eyes`,
+        lyrics: " Test Lyrics",
+        checksum: "",
+        id: 101,
       },
       searchArtist: "",
       searchSong: "",
@@ -42,36 +41,25 @@ export default {
     async updateQuery(qArtist, qSong) {
       try {
         //getting the artist and song name to search from the finder
+        let finalSong = {};
+        let finalResult = {};
         this.searchSong = qSong;
         this.searchArtist = qArtist;
 
-        const testArtist = "U2";
-        const testSong = "beautiful day";
+        console.log();
 
-        console.log(this.searchArtist, this.searchSong);
-        // const res = await fetch(
-        //   "https://private-anon-18345d477a-lyricsovh.apiary-mock.com/v1/Coldplay/Adventure%20of%20a%20Lifetime"
-        // );
-
-        // const res = await fetch(
-        //   "http://api.chartlyrics.com/apiv1.asmx/GetLyric?lyricId=1710&lyricCheckSum=b6d42dee5adafc97b7c0247a5740c57f"
-        // );
-
-        // const res = await fetch(
-        //   `http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist=${qArtist}&song=${qSong}`
-        // );
+        // console.log(this.searchArtist, this.searchSong);
 
         const res = await fetch(
-          `http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=${testArtist}&song=${testSong}`
+          `http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=${qArtist}&song=${qSong}`
         );
-        // Michael Mittermeier
 
         const body = await res.text();
         const x2js = new X2js();
         const json = x2js.xml2js(body);
         const songArray = json.ArrayOfSearchLyricResult.SearchLyricResult;
         const songColl = [];
-        // console.log(songArray);
+
         songArray.forEach((array) => {
           const songInfo = {};
           if (array.Artist != undefined && array.LyricId != 0) {
@@ -83,18 +71,31 @@ export default {
           }
         });
 
-        // console.log(songColl);
-
         //loop through the songCollection and check if the songs name and artist match to make the lyric other pass a message lyrics not found
-        let finalSong = {};
+
         for (let song of songColl) {
           // console.log(song.title);
-          if (song.title.toLowerCase() == testSong.toLowerCase()) {
+          if (song.title.toLowerCase() == qSong.toLowerCase()) {
             finalSong = song;
           }
         }
+        //once the final song has data then to make the call for getting the lyrics
 
-        console.log(finalSong);
+        if (finalSong.artist) {
+          const res = await fetch(
+            `http://api.chartlyrics.com/apiv1.asmx/GetLyric?lyricId=${finalSong.id}&lyricCheckSum=${finalSong.checksum}`
+          );
+          const body = await res.text();
+          const x2js = new X2js();
+          const json = x2js.xml2js(body);
+
+          finalResult = json.GetLyricResult;
+
+          this.song.title = finalResult.LyricSong;
+          this.song.id = finalResult.LyricId;
+          this.song.artist = finalResult.LyricArtist;
+          this.song.lyrics = finalResult.Lyric;
+        }
 
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);
       } catch (err) {
