@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="logo">{{ logo }}</h2>
+    <img src="" alt="" />
   </div>
 </template>
 <script>

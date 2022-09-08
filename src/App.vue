@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <v-main>
-      <v-container>
+      <v-container class="app-container">
         <v-row><logo></logo></v-row>
         <v-col><finder @song-submit="updateQuery"></finder></v-col>
         <info :song="song"></info>
@@ -26,12 +26,12 @@ export default {
   data() {
     return {
       song: {
-        title: "This I Love",
-        artist: "Guns & Roses",
-        album: "Chinese Democracy",
-        lyrics: " Test Lyrics",
+        title: "",
+        artist: "",
+        album: "",
+        lyrics: "",
         checksum: "",
-        id: 101,
+        id: null,
       },
       searchArtist: "",
       searchSong: "",
@@ -45,10 +45,6 @@ export default {
         let finalResult = {};
         this.searchSong = qSong;
         this.searchArtist = qArtist;
-
-        console.log();
-
-        // console.log(this.searchArtist, this.searchSong);
 
         const res = await fetch(
           `http://api.chartlyrics.com/apiv1.asmx/SearchLyric?artist=${qArtist}&song=${qSong}`
@@ -72,7 +68,6 @@ export default {
         });
 
         //loop through the songCollection and check if the songs name and artist match to make the lyric other pass a message lyrics not found
-
         for (let song of songColl) {
           // console.log(song.title);
           if (song.title.toLowerCase() == qSong.toLowerCase()) {
@@ -80,7 +75,6 @@ export default {
           }
         }
         //once the final song has data then to make the call for getting the lyrics
-
         if (finalSong.artist) {
           const res = await fetch(
             `http://api.chartlyrics.com/apiv1.asmx/GetLyric?lyricId=${finalSong.id}&lyricCheckSum=${finalSong.checksum}`
@@ -89,22 +83,45 @@ export default {
           const x2js = new X2js();
           const json = x2js.xml2js(body);
 
+          //assign the final result
           finalResult = json.GetLyricResult;
+
+          console.log(finalResult);
+          debugger;
 
           this.song.title = finalResult.LyricSong;
           this.song.id = finalResult.LyricId;
           this.song.artist = finalResult.LyricArtist;
-          this.song.lyrics = finalResult.Lyric;
+          this.song.lyrics = finalResult.Lyric.replaceAll("\r", "<br/>");
+          console.log(this.song.lyrics);
         }
 
         if (!res.ok) throw new Error(`${data.message} (${res.status})`);
       } catch (err) {
         console.log(err);
       }
-      //change this and make an api call here
-
-      //make an api call here
     },
   },
 };
 </script>
+<style scoped>
+.app-container {
+  background-size: cover;
+  border-radius: 20px;
+  min-height: 80%;
+  margin: auto auto;
+  box-shadow: 5px 5px 200px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  margin: 7rem auto;
+  color: white;
+}
+#app {
+  background: linear-gradient(
+    109.69deg,
+    rgba(255, 211, 25, 0.94) 8.14%,
+    rgba(255, 144, 31, 0.93) 38.94%,
+    rgba(255, 41, 117, 0.9) 74.6%,
+    rgba(140, 30, 255, 0.75) 108.64%
+  );
+}
+</style>
