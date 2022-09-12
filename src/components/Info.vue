@@ -3,13 +3,13 @@
     <v-container>
       <v-row class="justify-center">
         <v-col md="6">
-          <v-row class="ma-2">
-            <p>Title: {{ song.title }}</p>
+          <v-row class="ma-2 lyrics-info justify-center">
+            <p>{{ song.title }}</p>
           </v-row>
-          <v-row class="ma-2">
-            <p>Artist: {{ song.artist }}</p>
+          <v-row class="ma-2 lyrics-info justify-center">
+            <p>{{ song.artist }}</p>
           </v-row>
-          <v-row class="ma-2">
+          <v-row class="ma-2 lyrics justify-center">
             <p v-html="song.lyrics"></p>
           </v-row>
         </v-col>
@@ -27,7 +27,12 @@ export default {
 };
 </script>
 <style scoped>
-.info {
-  margin-bottom: 20px;
+.lyrics-info {
+  font-size: x-large;
+  font-weight: bolder;
+}
+.lyrics {
+  font-size: 1.2rem;
+  line-height: 1.7;
 }
 </style>

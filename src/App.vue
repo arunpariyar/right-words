@@ -109,10 +109,10 @@ export default {
   background-size: cover;
   border-radius: 20px;
   min-height: 80%;
-  margin: auto auto;
+
   box-shadow: 5px 5px 200px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
-  margin: 7rem auto;
+  margin: min(7rem) auto;
   color: white;
 }
 #app {

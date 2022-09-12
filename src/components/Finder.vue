@@ -54,7 +54,7 @@ export default {
   text-transform: uppercase;
 
   font-size: 1.2rem;
-  border: 3px solid #ffca1a78;
+  border: 3px solid #ffca1aab;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 </style>

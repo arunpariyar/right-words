@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <img src="" alt="" />
-  </div>
+  <v-row justify="center">
+    <img class="logo" src="../assets/images/Logo.png" alt="Logo" />
+  </v-row>
 </template>
 <script>
 export default {
@@ -15,7 +15,8 @@ export default {
 </script>
 <style scoped>
 .logo {
-  color: orangered;
-  margin-bottom: 40px;
+  margin: 3.5rem;
+  height: 85px;
+  width: 85px;
 }
 </style>
